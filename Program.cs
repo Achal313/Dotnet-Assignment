@@ -1,141 +1,230 @@
-﻿using System;
-using System.Collections.Generic;
-
-abstract class Employee
-{
-    public int EmployeeId { get; set; }
-    public string Name { get; set; }
-    public string Department { get; set; }
-    public int LeaveBalance { get; set; }
-
-    public abstract void SetLeaveBalance();
-
-    public void DisplayDetails()
-    {
-        Console.WriteLine($"ID: {EmployeeId}, Name: {Name}, Department: {Department}, Leave Balance: {LeaveBalance}");
-    }
-}
-
-class PermanentEmployee : Employee
-{
-    public override void SetLeaveBalance()
-    {
-        LeaveBalance = 24;
-    }
-}
-
-class ContractEmployee : Employee
-{
-    public override void SetLeaveBalance()
-    {
-        LeaveBalance = 12;
-    }
-}
-
-class LeaveRequest
-{
-    public int LeaveId { get; set; }
-    public int EmployeeId { get; set; }
-    public int NumberOfDays { get; set; }
-    public string Reason { get; set; }
-
-    public void DisplayLeave()
-    {
-        Console.WriteLine($"Leave ID: {LeaveId}, Employee ID: {EmployeeId}, Days: {NumberOfDays}, Reason: {Reason}");
-    }
-}
-
 class Program
 {
     static void Main()
     {
-        // Task 1
-        List<Employee> employees = new List<Employee>();
+        
+        Customer customer = new Customer();
 
-        PermanentEmployee emp1 = new PermanentEmployee
+        Console.WriteLine("Customer Registration");
+
+        Console.Write("Enter Customer ID: ");
+        customer.CustomerId = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter Name: ");
+        customer.Name = Console.ReadLine();
+
+        Console.Write("Enter Email: ");
+        customer.Email = Console.ReadLine();
+
+        Console.Write("Enter Password: ");
+        customer.Password = Console.ReadLine();
+
+        Console.WriteLine("Registration Successful");
+
+        
+        int attempts = 0;
+        bool loginSuccess = false;
+
+        while (attempts < 3)
         {
-            EmployeeId = 101,
-            Name = "Achal",
-            Department = "IT"
-        };
-        emp1.SetLeaveBalance();
+            Console.WriteLine("\nLogin");
 
-        ContractEmployee emp2 = new ContractEmployee
-        {
-            EmployeeId = 102,
-            Name = "Rahul",
-            Department = "HR"
-        };
-        emp2.SetLeaveBalance();
+            Console.Write("Enter Email: ");
+            string email = Console.ReadLine();
 
-        PermanentEmployee emp3 = new PermanentEmployee
-        {
-            EmployeeId = 103,
-            Name = "Priya",
-            Department = "Finance"
-        };
-        emp3.SetLeaveBalance();
+            Console.Write("Enter Password: ");
+            string password = Console.ReadLine();
 
-        employees.Add(emp1);
-        employees.Add(emp2);
-        employees.Add(emp3);
-
-        // Task 2
-        Console.WriteLine("All Employees:");
-        foreach (Employee emp in employees)
-        {
-            emp.DisplayDetails();
-        }
-
-        // Task 3
-        List<LeaveRequest> leaveRequests = new List<LeaveRequest>()
-        {
-            new LeaveRequest
+            if (email == customer.Email && password == customer.Password)
             {
-                LeaveId = 1,
-                EmployeeId = 101,
-                NumberOfDays = 2,
-                Reason = "Personal Work"
-            },
-            new LeaveRequest
-            {
-                LeaveId = 2,
-                EmployeeId = 103,
-                NumberOfDays = 3,
-                Reason = "Medical Leave"
+                Console.WriteLine("Welcome " + customer.Name);
+                loginSuccess = true;
+                break;
             }
-        };
-
-        // Task 4
-        Console.WriteLine("\nAll Leave Requests:");
-        foreach (LeaveRequest leave in leaveRequests)
-        {
-            leave.DisplayLeave();
-        }
-
-        // Task 5
-        Console.WriteLine("\nPermanent Employees:");
-        foreach (Employee emp in employees)
-        {
-            if (emp is PermanentEmployee)
+            else
             {
-                emp.DisplayDetails();
+                attempts++;
+                Console.WriteLine("Invalid Credentials");
             }
         }
 
-        // Task 6
-        Console.WriteLine("\nEmployee with ID 103:");
-        Employee foundEmployee = employees.Find(e => e.EmployeeId == 103);
-
-        if (foundEmployee != null)
+        if (!loginSuccess)
         {
-            foundEmployee.DisplayDetails();
+            Console.WriteLine("Account Locked");
+            return;
         }
 
-        // Task 7
-        Console.WriteLine($"\nTotal Employees: {employees.Count}");
+        
+        List<Product> products = new List<Product>();
 
-        // Task 8
-        Console.WriteLine($"Total Leave Requests: {leaveRequests.Count}");
+        Console.Write("\nHow many products do you want to add? ");
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        for (int i = 0; i < n; i++)
+        {
+            Product p = new Product();
+
+            Console.Write("Enter Product ID: ");
+            p.ProductId = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter Product Name: ");
+            p.ProductName = Console.ReadLine();
+
+            Console.Write("Enter Price: ");
+            p.Price = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter Stock: ");
+            p.Stock = Convert.ToInt32(Console.ReadLine());
+
+            products.Add(p);
+        }
+
+        
+        Console.WriteLine("\nAll Products");
+
+        foreach (Product p in products)
+        {
+            Console.WriteLine("Product Id : " + p.ProductId);
+            Console.WriteLine("Product Name : " + p.ProductName);
+            Console.WriteLine("Price : " + p.Price);
+            Console.WriteLine("Stock : " + p.Stock);
+            Console.WriteLine();
+        }
+
+        
+        Console.Write("Enter product name to search: ");
+        string searchName = Console.ReadLine();
+
+        bool found = false;
+
+        foreach (Product p in products)
+        {
+            if (p.ProductName == searchName)
+            {
+                Console.WriteLine("\nProduct Found");
+                Console.WriteLine("Product Id : " + p.ProductId);
+                Console.WriteLine("Product Name : " + p.ProductName);
+                Console.WriteLine("Price : " + p.Price);
+                Console.WriteLine("Stock : " + p.Stock);
+
+                found = true;
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("Product Not Found");
+        }
+
+        List<CartItem> cart = new List<CartItem>();
+
+        int choice;
+
+        do
+        {
+            Console.Write("\nEnter Product ID: ");
+            int pid = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter Quantity: ");
+            int qty = Convert.ToInt32(Console.ReadLine());
+
+            bool productFound = false;
+
+            foreach (Product p in products)
+            {
+                if (p.ProductId == pid)
+                {
+                    productFound = true;
+
+                    if (qty <= p.Stock)
+                    {
+                        CartItem c = new CartItem();
+
+                        c.ProductId = p.ProductId;
+                        c.ProductName = p.ProductName;
+                        c.Quantity = qty;
+                        c.Amount = p.Price * qty;
+
+                        cart.Add(c);
+
+                        p.Stock = p.Stock - qty;
+
+                        Console.WriteLine("Product Added To Cart");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Insufficient Stock");
+                    }
+                }
+            }
+
+            if (!productFound)
+            {
+                Console.WriteLine("Invalid Product ID");
+            }
+
+            Console.WriteLine("\nDo you want to add another product?");
+            Console.WriteLine("1. Yes");
+            Console.WriteLine("2. No");
+
+            choice = Convert.ToInt32(Console.ReadLine());
+
+        } while (choice == 1);
+
+        Console.WriteLine("\nCart");
+
+        double totalAmount = 0;
+
+        foreach (CartItem c in cart)
+        {
+            Console.WriteLine(c.ProductName + " x" + c.Quantity);
+            totalAmount += c.Amount;
+        }
+
+        
+        double discountPercent = 0;
+
+        if (totalAmount >= 1000 && totalAmount <= 4999)
+        {
+            discountPercent = 10;
+        }
+        else if (totalAmount >= 5000 && totalAmount <= 9999)
+        {
+            discountPercent = 20;
+        }
+        else if (totalAmount >= 10000)
+        {
+            discountPercent = 30;
+        }
+
+        double discount = totalAmount * discountPercent / 100;
+        double finalAmount = totalAmount - discount;
+
+        Console.WriteLine("\nTotal Amount : " + totalAmount);
+        Console.WriteLine("Discount : " + discount);
+        Console.WriteLine("Final Amount : " + finalAmount);
+
+        
+        Console.WriteLine("\nChoose Payment");
+        Console.WriteLine("1. UPI");
+        Console.WriteLine("2. Credit Card");
+        Console.WriteLine("3. Debit Card");
+        Console.WriteLine("4. Cash on Delivery");
+
+        int paymentChoice = Convert.ToInt32(Console.ReadLine());
+
+        switch (paymentChoice)
+        {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                Console.WriteLine("Payment Successful");
+                break;
+
+            default:
+                Console.WriteLine("Invalid Option");
+                break;
+        }
     }
 }
