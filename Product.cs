@@ -1,8 +1,4 @@
-﻿using System;
-class Product
-{ 
-    public int ProductId{get; set;}
-    public string ProductName{get; set;}
-    public double Price{get; set;}
-    public int Stock{get; set;}
+﻿public abstract class Product
+{
+    public abstract double CalculateDiscount(double amount);
 }
