@@ -1,6 +1,16 @@
-class CartItem{
-    public int ProductId{get; set; }
-    public string ProductName{get; set; }
-    public int Quantity{get; set; }
-    public double Amount{get; set;}
+class CartItem
+{
+    public Product Product { get; set; }
+    public int Quantity { get; set; }
+
+    public CartItem(Product product, int quantity)
+    {
+        Product = product;
+        Quantity = quantity;
+    }
+
+    public double Amount()
+    {
+        return Product.Price * Quantity;
+    }
 }
