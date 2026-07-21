@@ -1,107 +1,262 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-class Program
+namespace AutomobileVehicleManagementSystem
 {
-    static List<StationeryItem> items = new List<StationeryItem>();
-
-    static void Main()
+    class Vehicle
     {
-        string username = "admin";
-        string password = "admin123";
-        int attempts = 3;
+        public int VehicleID { get; set; }
+        public string VehicleName { get; set; }
+        public string VehicleType { get; set; }
+        public string Brand { get; set; }
+        public double Price { get; set; }
+        public int Year { get; set; }
+    }
 
-        while (attempts > 0)
+    class Program
+    {
+        static List<Vehicle> vehicles = new List<Vehicle>();
+
+        static void Main(string[] args)
         {
-            Console.Write("Enter Username: ");
-            string u = Console.ReadLine();
+            Console.Write("Enter Employee Name: ");
+            string empName = Console.ReadLine();
 
-            Console.Write("Enter Password: ");
-            string p = Console.ReadLine();
+            Console.Write("Enter Employee ID: ");
+            string empId = Console.ReadLine();
 
-            if (u == username && p == password)
+            Console.WriteLine($"\nWelcome {empName}");
+
+            int choice;
+
+            do
             {
-                Console.WriteLine("Login Successful");
-                break;
+                Console.WriteLine("\n==============================");
+                Console.WriteLine("ABC MOTORS");
+                Console.WriteLine("Vehicle Management System");
+                Console.WriteLine("==============================");
+                Console.WriteLine("1. Add Vehicle");
+                Console.WriteLine("2. View All Vehicles");
+                Console.WriteLine("3. Search Vehicle");
+                Console.WriteLine("4. Update Vehicle Price");
+                Console.WriteLine("5. Delete Vehicle");
+                Console.WriteLine("6. Calculate Discount");
+                Console.WriteLine("7. Show Vehicle Details");
+                Console.WriteLine("8. Exit");
+                Console.Write("Enter your choice: ");
+
+                choice = Convert.ToInt32(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        AddVehicle();
+                        break;
+
+                    case 2:
+                        ViewVehicles();
+                        break;
+
+                    case 3:
+                        SearchVehicle();
+                        break;
+
+                    case 4:
+                        UpdatePrice();
+                        break;
+
+                    case 5:
+                        DeleteVehicle();
+                        break;
+
+                    case 6:
+                        CalculateDiscount();
+                        break;
+
+                    case 7:
+                        ShowVehicleDetails();
+                        break;
+
+                    case 8:
+                        Console.WriteLine("Thank you for using ABC Motors System.");
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid Choice!");
+                        break;
+                }
+
+            } while (choice != 8);
+        }
+
+        static void AddVehicle()
+        {
+            Vehicle v = new Vehicle();
+
+            Console.Write("Enter Vehicle ID: ");
+            v.VehicleID = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter Vehicle Name: ");
+            v.VehicleName = Console.ReadLine();
+
+            Console.Write("Enter Vehicle Type (Car/Bike/Truck): ");
+            v.VehicleType = Console.ReadLine();
+
+            Console.Write("Enter Brand: ");
+            v.Brand = Console.ReadLine();
+
+            Console.Write("Enter Price: ");
+            v.Price = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter Manufacturing Year: ");
+            v.Year = Convert.ToInt32(Console.ReadLine());
+
+            vehicles.Add(v);
+
+            Console.WriteLine("Vehicle Added Successfully!");
+        }
+
+        static void ViewVehicles()
+        {
+            if (vehicles.Count == 0)
+            {
+                Console.WriteLine("No vehicles available.");
+                return;
             }
 
-            attempts--;
-            Console.WriteLine("Invalid Login");
-            Console.WriteLine("Attempts Left: " + attempts);
+            Console.WriteLine("\n------------------------------------------------------------------");
+            Console.WriteLine("ID\tName\t\tBrand\t\tType\tPrice");
+            Console.WriteLine("------------------------------------------------------------------");
 
-            if (attempts == 0)
+            foreach (Vehicle v in vehicles)
             {
-                throw new LoginFailedException();
+                Console.WriteLine($"{v.VehicleID}\t{v.VehicleName}\t\t{v.Brand}\t\t{v.VehicleType}\t{v.Price}");
             }
         }
 
-        int choice;
-
-        do
+        static void SearchVehicle()
         {
-            Console.WriteLine("\n------ Stationery Store ------");
-            Console.WriteLine("1. Add Item");
-            Console.WriteLine("2. Display Items");
-            Console.WriteLine("9. Exit");
+            Console.Write("Enter Vehicle ID: ");
+            int id = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Enter Choice: ");
-            choice = Convert.ToInt32(Console.ReadLine());
+            Vehicle v = vehicles.Find(x => x.VehicleID == id);
 
-            switch (choice)
+            if (v != null)
             {
-                case 1:
-                    AddItem();
+                Console.WriteLine("\nVehicle Found");
+                Console.WriteLine("ID : " + v.VehicleID);
+                Console.WriteLine("Name : " + v.VehicleName);
+                Console.WriteLine("Brand : " + v.Brand);
+                Console.WriteLine("Type : " + v.VehicleType);
+                Console.WriteLine("Price : " + v.Price);
+                Console.WriteLine("Year : " + v.Year);
+            }
+            else
+            {
+                Console.WriteLine("Vehicle not found.");
+            }
+        }
+
+        static void UpdatePrice()
+        {
+            Console.Write("Enter Vehicle ID: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Vehicle v = vehicles.Find(x => x.VehicleID == id);
+
+            if (v != null)
+            {
+                Console.Write("Enter New Price: ");
+                v.Price = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Price Updated Successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Vehicle ID does not exist.");
+            }
+        }
+
+        static void DeleteVehicle()
+        {
+            Console.Write("Enter Vehicle ID: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Vehicle v = vehicles.Find(x => x.VehicleID == id);
+
+            if (v != null)
+            {
+                vehicles.Remove(v);
+                Console.WriteLine("Vehicle Deleted Successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Vehicle not available.");
+            }
+        }
+
+        static void CalculateDiscount()
+        {
+            Console.Write("Enter Vehicle ID: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Vehicle v = vehicles.Find(x => x.VehicleID == id);
+
+            if (v != null)
+            {
+                double discount = 0;
+
+                if (v.VehicleType.ToLower() == "car")
+                {
+                    discount = v.Price * 0.10;
+                }
+                else if (v.VehicleType.ToLower() == "bike")
+                {
+                    discount = v.Price * 0.05;
+                }
+                else if (v.VehicleType.ToLower() == "truck")
+                {
+                    discount = v.Price * 0.12;
+                }
+
+                double finalPrice = v.Price - discount;
+
+                Console.WriteLine("Vehicle Price : " + v.Price);
+                Console.WriteLine("Discount : " + discount);
+                Console.WriteLine("Final Price : " + finalPrice);
+            }
+            else
+            {
+                Console.WriteLine("Vehicle not found.");
+            }
+        }
+
+        static void ShowVehicleDetails()
+        {
+            Console.Write("Enter Vehicle Type (Car/Bike/Truck): ");
+            string type = Console.ReadLine().ToLower();
+
+            switch (type)
+            {
+                case "car":
+                    Console.WriteLine("Car is a four wheeler.");
+                    Console.WriteLine("Suitable for family.");
                     break;
 
-                case 2:
-                    DisplayItems();
+                case "bike":
+                    Console.WriteLine("Bike is fuel efficient.");
+                    Console.WriteLine("Suitable for city rides.");
                     break;
 
-                case 9:
-                    Console.WriteLine("Thank You. Visit Again.");
+                case "truck":
+                    Console.WriteLine("Truck is used for transportation.");
+                    Console.WriteLine("Heavy load vehicle.");
                     break;
 
                 default:
-                    Console.WriteLine("Invalid Choice");
+                    Console.WriteLine("Invalid Vehicle Type.");
                     break;
             }
-
-        } while (choice != 9);
-    }
-
-    static void AddItem()
-    {
-        StationeryItem item = new StationeryItem();
-
-        Console.Write("Enter Item Id: ");
-        item.ItemId = Convert.ToInt32(Console.ReadLine());
-
-        Console.Write("Enter Item Name: ");
-        item.ItemName = Console.ReadLine();
-
-        Console.Write("Enter Category: ");
-        item.Category = Console.ReadLine();
-
-        Console.Write("Enter Brand: ");
-        item.Brand = Console.ReadLine();
-
-        Console.Write("Enter Price: ");
-        item.Price = Convert.ToDouble(Console.ReadLine());
-
-        Console.Write("Enter Quantity: ");
-        item.Quantity = Convert.ToInt32(Console.ReadLine());
-
-        items.Add(item);
-
-        Console.WriteLine("Item Added Successfully");
-    }
-
-    static void DisplayItems()
-    {
-        foreach (StationeryItem item in items)
-        {
-            item.DisplayDetails();
-            Console.WriteLine("----------------");
         }
     }
 }
