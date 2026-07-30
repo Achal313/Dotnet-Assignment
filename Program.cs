@@ -1,31 +1,27 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using _29Jul.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add MVC services
-builder.Services.AddControllersWithViews();
+// Add services to the container.
+
+builder.Services.AddControllers();
+builder.Services.AddScoped<IVehicleService, VehicleService>();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure middleware
-if (!app.Environment.IsDevelopment())
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
 
 app.UseAuthorization();
 
-// Default route
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Employee}/{action=Register}/{id?}");
+app.MapControllers();
 
 app.Run();
