@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Practical\\29Assignmeny\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8F3B7F-4DFB-4419-8EBB-C93C7782B121}|29Assignmeny.csproj|c:\\practical\\29assignmeny\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8F3B7F-4DFB-4419-8EBB-C93C7782B121}|29Assignmeny.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8F3B7F-4DFB-4419-8EBB-C93C7782B121}|29Assignmeny.csproj|c:\\practical\\29assignmeny\\services\\vehicleservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8F3B7F-4DFB-4419-8EBB-C93C7782B121}|29Assignmeny.csproj|solutionrelative:services\\vehicleservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8F3B7F-4DFB-4419-8EBB-C93C7782B121}|29Assignmeny.csproj|c:\\practical\\29assignmeny\\controllers\\vehiclecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8F3B7F-4DFB-4419-8EBB-C93C7782B121}|29Assignmeny.csproj|solutionrelative:controllers\\vehiclecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8F3B7F-4DFB-4419-8EBB-C93C7782B121}|29Assignmeny.csproj|c:\\practical\\29assignmeny\\services\\ivehicleservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8F3B7F-4DFB-4419-8EBB-C93C7782B121}|29Assignmeny.csproj|solutionrelative:services\\ivehicleservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8F3B7F-4DFB-4419-8EBB-C93C7782B121}|29Assignmeny.csproj|c:\\practical\\29assignmeny\\modules\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8F3B7F-4DFB-4419-8EBB-C93C7782B121}|29Assignmeny.csproj|solutionrelative:modules\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Practical\\29Assignmeny\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Practical\\29Assignmeny\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T08:58:05.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VehicleController.cs",
+              "DocumentMoniker": "C:\\Practical\\29Assignmeny\\Controllers\\VehicleController.cs",
+              "RelativeDocumentMoniker": "Controllers\\VehicleController.cs",
+              "ToolTip": "C:\\Practical\\29Assignmeny\\Controllers\\VehicleController.cs",
+              "RelativeToolTip": "Controllers\\VehicleController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAIwDQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T08:55:19.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VehicleServices.cs",
+              "DocumentMoniker": "C:\\Practical\\29Assignmeny\\Services\\VehicleServices.cs",
+              "RelativeDocumentMoniker": "Services\\VehicleServices.cs",
+              "ToolTip": "C:\\Practical\\29Assignmeny\\Services\\VehicleServices.cs",
+              "RelativeToolTip": "Services\\VehicleServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T08:55:02.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IVehicleServices.cs",
+              "DocumentMoniker": "C:\\Practical\\29Assignmeny\\Services\\IVehicleServices.cs",
+              "RelativeDocumentMoniker": "Services\\IVehicleServices.cs",
+              "ToolTip": "C:\\Practical\\29Assignmeny\\Services\\IVehicleServices.cs",
+              "RelativeToolTip": "Services\\IVehicleServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T08:54:38.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Vehicle.cs",
+              "DocumentMoniker": "C:\\Practical\\29Assignmeny\\Modules\\Vehicle.cs",
+              "RelativeDocumentMoniker": "Modules\\Vehicle.cs",
+              "ToolTip": "C:\\Practical\\29Assignmeny\\Modules\\Vehicle.cs",
+              "RelativeToolTip": "Modules\\Vehicle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T08:53:56.048Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
