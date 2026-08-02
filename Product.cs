@@ -1,33 +1,21 @@
-class Product
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace _27Assignment.Module
 {
-    public int ProductId { get; set; }
-    public string Name { get; set; }
-    public string Category { get; set; }
-    public string Description { get; set; }
-    public double Price { get; set; }
-    public int Quantity { get; set; }
-    public string Brand { get; set; }
-    public double Discount { get; set; }
-    public double Rating { get; set; }
-
-    public Product(int id, string name, string category,
-        string description, double price, int quantity,
-        string brand, double discount, double rating)
+    public class Product
     {
-        ProductId = id;
-        Name = name;
-        Category = category;
-        Description = description;
-        Price = price;
-        Quantity = quantity;
-        Brand = brand;
-        Discount = discount;
-        Rating = rating;
-    }
+        [Required(ErrorMessage = "product id is required")]
+        public int ProductId {  get; set; }
 
-    public void Display()
-    {
-        System.Console.WriteLine(
-        $"{ProductId} {Name} {Category} ₹{Price} Stock:{Quantity}");
+        [Required(ErrorMessage = "product Name is required")]
+        public string ProductName { get; set; }
+        [Required(ErrorMessage = "product Price is required")]
+
+
+        public int ProductPrice { get; set; }
+        [Required(ErrorMessage = "product category is required")]
+
+        public string ProductCategory { get; set; }
+
     }
 }
